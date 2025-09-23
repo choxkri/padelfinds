@@ -1,17 +1,19 @@
 import axios from "axios";
 import { Html } from "next/document";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ScrapePage() {
   const [pageState, setPageState] = useState()
-  async function scrapeSite() {
-    const response = await axios.get("https://www.scrapingcourse.com/ecommerce/")
-    const html = response.data
-    setPageState(html)
-    console.log(html)
+  async function fetchData() {
+    const response = await fetch('api/scrapeAPI')
+    const data = await response.json()
+    setPageState(data)
   }
-  scrapeSite()
+
+  useEffect(() => {
+    fetchData()
+  }, [])
   return <div>
-    you can see the page
+    {JSON.stringify(pageState)}
     </div>;
 }
