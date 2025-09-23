@@ -1,8 +1,15 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
-Make sure to [install Node and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your machine
-First, run the development server:
+Make sure to [install Node and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your machine.
+
+You will also need to install the [axios library](https://axios-http.com/):
+
+```bash
+npm install axios
+```
+
+To run the development server:
 
 ```bash
 npm run dev
