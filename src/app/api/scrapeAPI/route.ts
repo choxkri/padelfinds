@@ -2,7 +2,7 @@ import * as cheerio from "cheerio"
 
 export async function GET() {
 
-  const endpoint = "https://www.scrapingcourse.com/ecommerce/"
+  const endpoint = "https://www.babolat.com/nl/padel/padel-rackets.html"
 
   const response = await fetch(endpoint, {
     headers: {
@@ -13,12 +13,15 @@ export async function GET() {
 
   })
   const html = await response.text()
+  //console.log(html)
   const $ = cheerio.load(html)
-
-  const products: { title: string }[] = []
+  console.log($('h3.c-product-tile__product-name').text())
+  const products: { title: string, price: string }[] = []
   $('li.product').each((_, el) => {
     products.push({
-      title: $(el).find("h2").first().text()
+      title: $(el).find("h3").first().text(),
+      price: $(el).find("span").first().text()
+
     })
   })
 
