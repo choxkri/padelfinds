@@ -35,13 +35,16 @@ export async function GET() {
   
   const html = await response.text()
   const $ = cheerio.load(html)
+  // $('div.col-6.col-sm-4.m-grid-results-product-tile').each((_, el) => {
+  //   console.log($(el).find("img.c-product-tile__tile-image.tile-image").first().attr("data-srcset"))
+  // })
 
   const products: BabolatProduct[] = []
   $('div.col-6.col-sm-4.m-grid-results-product-tile').each((_, el) => {
     products.push({
       title: ArrayToString($(el).find("a.c-product-tile__product-link").first().attr("href")?.split("/")[2].split("-").map(n => Capitalize(n))),
       price: $(el).find("span.c-price__value").first().text().trim(),
-      img_url: $(el).find("img.c-product-tile__tile-image.tile-image").first().attr("srcset")
+      img_url: $(el).find("img.c-product-tile__tile-image.tile-image").first().attr("data-srcset")
     })
   })
 
