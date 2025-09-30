@@ -1,8 +1,6 @@
-import axios from "axios";
-import { Html } from "next/document";
 import { useEffect, useState } from "react";
-import { BabolatProduct } from "./api/scrapeAPI/babolat/BabolatProduct";
-import { redirect } from "next/dist/server/api-utils";
+import { BabolatRacketAPI } from "./api/scrapeAPI/babolat/BabolatTypes";
+import styles from './styles/test.module.css';
 
 export default function ScrapePage() {
   const [pageState, setPageState] = useState<BabolatRacketAPI>({ count: 0, products: [] })
@@ -12,27 +10,32 @@ export default function ScrapePage() {
     setPageState(data)
   }
 
-  type BabolatRacketAPI = {
-    count: number,
-    products: BabolatProduct[]
-  }
 
   useEffect(() => {
     fetchData()
   }, [])
+
+
   return <div>
-    <div>
-      here will be header / navbar
-    </div>
-    ----------------------------
     <h1>Products</h1>
     {
       pageState.count > 0 && (
-        <div onClick={() => window.open('https://example.com', '_blank', 'noopener,noreferrer')}>
-          <h2>{pageState.products[1].title}</h2>
-          <h3>{pageState.products[1].price}</h3>
-          <img srcSet={pageState.products[1].img_url}></img>
-        </div>
+        <div className={styles.grid}>
+        {pageState.products.map((p, i) => (
+          <article className={styles.card} key={`${p.title}-${i}`}>
+            <div className={styles.thumb}>
+              <img
+                srcSet={p.img_url}
+                sizes="(max-width: 767px) 100vw, (max-width: 1199px) 33vw, 300px"
+                alt={p.title}
+                loading="lazy"
+              />
+            </div>
+            <h3 className={styles.title}>{p.title}</h3>
+            <p className={styles.price}>{p.price}</p>
+          </article>
+        ))}
+      </div>
       )
     }
     </div>;

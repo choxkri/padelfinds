@@ -3,3 +3,8 @@ export type BabolatProduct = {
   price: string;
   img_url: string | undefined;
 };
+
+export type BabolatRacketAPI = {
+  count: number;
+  products: BabolatProduct[];
+};

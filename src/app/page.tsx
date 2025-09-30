@@ -1,5 +1,5 @@
 "use client"
-
+import Nav from "./components/Navbar"
 import { useEffect, useState } from "react"
 import ScrapePage from "./test"
 
@@ -34,28 +34,7 @@ export default function Home() {
 
 
   return <div>
-    {/* <h1>
-      hello world
-    </h1>
-    <button onClick={_ => alert(JSON.stringify(players["data"][9]))}>list of players</button>
-    <div>
-      {JSON.stringify(exampleState)}
-    </div>
-    <div>
-      {players["data"].length > 0 && (
-        <div>
-          <h1>{players["data"][0].name}</h1>
-          <img src={players["data"][0].photo_url}/>
-        </div>
-        
-      )}
-      
-    </div>
-    <div>
-      {exampleState.length > 0 && (
-        <img src={exampleState[0].url}/>
-      )}
-    </div> */}
+    <Nav></Nav>
     <ScrapePage/>
   </div>
 }
