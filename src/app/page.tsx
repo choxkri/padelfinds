@@ -1,7 +1,7 @@
 "use client"
 import Nav from "./components/Navbar"
 import { useEffect, useState } from "react"
-import ScrapePage from "./test"
+import ScrapePage from "./productPage"
 
 export default function Home() {
   const [exampleState, setExampleState] = useState<CatAPI[]>([])
