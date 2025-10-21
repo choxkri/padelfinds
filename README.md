@@ -3,11 +3,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Getting Started
 Make sure to [install Node and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your machine.
 
-You will also need to install the [axios library](https://axios-http.com/):
+This project makes use of the following libraries:
+ -[cheerio](https://www.npmjs.com/package/cheerio)
+ -[csv-parser](https://www.npmjs.com/package/csv-parser)
 
-```bash
-npm install axios
-```
 
 To run the development server:
 
